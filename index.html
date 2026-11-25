@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RRRating Editor</title>
+  <meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main>
+    <header>
+      <div class="header-row">
+        <div>
+          <h1>Retro Rewind Rating Editor</h1>
+          <p>View and edit the VR/BR stored in <code>RRRating.pul</code></p>
+        </div>
+        <button id="themeToggle" class="theme-toggle" type="button" aria-pressed="false">Dark mode</button>
+      </div>
+    </header>
+
+    <section class="panel">
+      <div class="import-bar">
+        <label class="file-button" for="importFile">Import RRRating.pul</label>
+        <input id="importFile" type="file" accept=".pul" hidden>
+        <button id="newFile" class="secondary" type="button">New file</button>
+        <span id="importStatus"></span>
+      </div>
+      <div class="grid labels">
+        <span>Friend code</span>
+        <span>VR</span>
+        <span>BR</span>
+        <span></span>
+        <span></span>
+      </div>
+      <div id="rows"></div>
+      <div class="actions">
+        <button id="addRow" type="button">Add another profile</button>
+        <button id="fetchAll" class="secondary" type="button">Get all VR from leaderboard</button>
+        <span id="rowCount" class="muted"></span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="actions">
+        <button id="generate" type="button">Generate download</button>
+        <span id="status"></span>
+      </div>
+      <div id="downloads" class="downloads"></div>
+    </section>
+  </main>
+
+  <template id="rowTemplate">
+    <div class="grid row">
+      <input class="fc" type="text" inputmode="numeric" maxlength="14" placeholder="0000-0000-0000" spellcheck="false"
+        autocomplete="off">
+      <input class="vr" type="number" min="1" max="1000000" value="5000">
+      <input class="br" type="number" min="1" max="1000000" value="5000">
+      <button class="fetch secondary" type="button" title="Get VR from the Retro WFC leaderboard">Get VR</button>
+      <button class="remove" type="button">Remove</button>
+    </div>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
